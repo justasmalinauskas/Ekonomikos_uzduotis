@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Ekonomika.DataControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Ekonomika"
+             mc:Ignorable="d" d:DesignHeight="100" MinWidth="580"
+             HorizontalAlignment="Stretch" VerticalAlignment="Top"
+             x:Name="DataC">
+    <Grid>
+        <Label x:Name="nameofgood" Content="{Binding Path=GoodName, ElementName=DataC, Mode=TwoWay}" HorizontalAlignment="Stretch" Margin="10,10,10,0" VerticalAlignment="Top" Height="30"/>
+        <TextBox x:Name="enternext" HorizontalAlignment="Right" Height="23" Margin="0,45,0,0" PreviewTextInput="txtName_PreviewTextInput" TextWrapping="Wrap" Text="{Binding Path=GoodsNew, ElementName=DataC, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, StringFormat=0.00}" VerticalAlignment="Top" Width="128"/>
+        <Button x:Name="addtosum" PreviewTextInput="txtName_PreviewTextInput" Content="Įvesti" HorizontalAlignment="Right" Margin="0,73,0,0" VerticalAlignment="Top" Width="128" Height="23" Click="addtosum_Click"/>
+        <Button x:Name="bringlast" Content="Grąžinti buvusį" HorizontalAlignment="Right" Margin="0,73,133,0" VerticalAlignment="Top" Width="128" Height="23" Click="bringlast_Click"/>
+        <!-- <Label x:Name="sum" Content="{Binding Path=GoodSum, ElementName=DataC, StringFormat=0.00, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="28"/>-->
+        <Label x:Name="sum" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top" Height="28">
+            <Label.Content>
+                <Binding Path="GoodSum" ElementName="DataC" StringFormat="{}{0:C0}.00" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"/>
+            </Label.Content>
+            <Label.ContentStringFormat>
+                Išleista {0} €
+            </Label.ContentStringFormat>
+        </Label>
+        <Button x:Name="DeleteandClose" Content="X" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" Width="35" Height="23" Click="DeleteandClose_Click"/>
+
+    </Grid>
+</UserControl>

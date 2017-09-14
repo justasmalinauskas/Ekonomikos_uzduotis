@@ -1,0 +1,27 @@
+﻿<Window x:Class="Ekonomika.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ekonomika"
+        mc:Ignorable="d"
+        Title="Išlaidų skaičiuoklė" MinHeight="480" MinWidth="640" Height="480" Width="640"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Menu HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Top" Height="16">
+        </Menu>
+        <Label x:Name="label" Content="Pasirinkite norimą kategoriją" HorizontalAlignment="Stretch" Margin="10,21,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="comboBox"  HorizontalAlignment="Stretch" Margin="10,52,10,0" VerticalAlignment="Top" SelectionChanged="comboBox_SelectionChanged"/>
+        <ListBox ItemsSource="{Binding DataControl}" x:Name="aListBox"  HorizontalAlignment="Stretch" Margin="10,80,10,50" VerticalAlignment="Stretch">
+            <ListBox.Resources>
+                <DataTemplate DataType="{x:Type local:DataControl}">
+                    <local:DataControl />
+                </DataTemplate>
+            </ListBox.Resources>
+        </ListBox>
+        <Label x:Name="sumall" Content="Label" HorizontalAlignment="Left" Margin="10,0,0,10" VerticalAlignment="Bottom" Height="24" FontSize="10.667"/>
+        <Button x:Name="savetocsv" Content="Išsaugoti CSV formatu" HorizontalAlignment="Right" Margin="0,0,10,11" VerticalAlignment="Bottom" Width="150" Click="savetocsv_Click"/>
+        <Button x:Name="saveasxlsx" Content="Išsaugoti Excel(xlsx) formatu" HorizontalAlignment="Right" Margin="0,0,165,11" VerticalAlignment="Bottom" Width="150" Click="saveasxlsx_Click"/>
+
+    </Grid>
+</Window>
